@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
+import CssBaseline from "@mui/material/CssBaseline";
+import Login from "./pages/home";
 
-function App() {
+export default function App() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.scrollingElement.scrollTop = 0;
+  }, [pathname]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <CssBaseline />
+      <Routes>
+        <Route
+          path="/"
+          element=<Login />
+        />
+      </Routes>
+    </>
   );
 }
-
-export default App;
